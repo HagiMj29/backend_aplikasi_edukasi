@@ -16,10 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.index');
-});
-
+Route::get('/', [UserController::class, 'index'])->name('/');
 
 Route::get('register', [UserController::class, 'showRegistrationForm'])->name('registerForm');
 Route::post('register', [UserController::class, 'register']);
