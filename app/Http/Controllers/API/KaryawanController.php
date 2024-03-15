@@ -7,6 +7,7 @@ use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class KaryawanController extends controller {
 
@@ -36,15 +37,19 @@ class KaryawanController extends controller {
             'no_bp' => 'required',
             'no_hp' => 'required',
             'email' => 'required',
-            'input_date' => 'required',
+            // 'input_date' => 'required',
         ]);
+
+        // Mengambil waktu sekarang menggunakan Carbon
+        $input_date = Carbon::now();
 
         $karyawans = Karyawan::create([
             'name' => $request->name,
             'no_bp' => $request->no_bp,
             'no_hp' => $request->no_hp,
             'email' => $request->email,
-            'input_date' => $request->input_date,
+            // 'input_date' => $request->input_date,
+            'input_date' => $input_date,
         ]);
 
         return response()->json(['message' => 'Data Berhasil di Tambahkan', 'karyawans' => $karyawans], 201);
@@ -57,15 +62,19 @@ class KaryawanController extends controller {
             'no_bp' => 'required',
             'no_hp' => 'required',
             'email' => 'required',
-            'input_date' => 'required',
+            // 'input_date' => 'required',
         ]);
+
+        // Mengambil waktu sekarang menggunakan Carbon
+        $input_date = Carbon::now();
 
         $karyawans->update([
             'name' => $request->name,
             'no_bp' => $request->no_bp,
             'no_hp' => $request->no_hp,
             'email' => $request->email,
-            'input_date' => $request->input_date,
+            // 'input_date' => $request->input_date,
+            'input_date' => $input_date,
         ]);
 
         return response()->json(['message' => 'Data Berhasil di Ubah', 'karyawans' => $karyawans], 200);
