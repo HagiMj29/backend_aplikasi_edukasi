@@ -9,7 +9,7 @@
     </div>
     <div class="card-body">
         <div class="panel-body">
-            <a href="create" class="btn btn-md btn-success mb-3">TAMBAH DATA</a>
+            <a href="{{route('berita.create')}}" class="btn btn-md btn-success mb-3">TAMBAH DATA</a>
         </div>
         <div class="table-responsive w-100">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -30,11 +30,7 @@
                             <td class="text-center">{{ $data->title}}</td>
                             <td class="text-center">{{ $data->content}}</td>
                             <td class="text-center">
-                                @if($data->image)
-                                    <img src="{{ $data->image }}" alt="Gambar Berita" width="100">
-                                @else
-                                    Tidak ada gambar
-                                @endif
+                                <img src="{{ asset('storage/' . $data->image) }}" alt="Gambar Berita" width="100">
                             </td>
                             <td class="text-center">
                                 <a href="#" class="btn btn-warning btn-circle">

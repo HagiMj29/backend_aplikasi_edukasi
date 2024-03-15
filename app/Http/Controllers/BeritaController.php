@@ -25,7 +25,7 @@ class BeritaController extends Controller
         $request->validate([
             'title'=>'required',
             'content'=>'required',
-            'image'=>'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $imagePath = null;
@@ -41,6 +41,8 @@ class BeritaController extends Controller
         'content' => $request->content,
         'image' => $imagePath,
     ]);
+
+    return redirect()->route('berita.index');
 
 
     }

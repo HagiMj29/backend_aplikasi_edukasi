@@ -53,17 +53,23 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'sometimes|string|min:8|confirmed',
+            'email' => 'required',
+            'password' => 'nullable',
         ]);
-
+    
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->has('password') ? Hash::make($request->input('password')) : $user->password,
         ]);
-
-        return response()->json(['message' => 'Data Berhasil di Ubah', 'user' => $user], 200);
+    
+        // Menghasilkan array yang berisi pesan dan objek pengguna
+        $result = [
+            'message' => 'Data Berhasil di Ubah',
+            'user' => $user
+        ];
+    
+        return response()->json($result, 200);
     }
 
     public function destroy(User $user)
@@ -117,8 +123,11 @@ class UserController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-        ]);   
-        return response()->json(['user' => $user], 201);
+        ]);  
+        
+        $result = $user;
+        
+        return response()->json(['message' => 'Data Berhasil di Regist', 'result'=>$result], 201);
     }
     
 
