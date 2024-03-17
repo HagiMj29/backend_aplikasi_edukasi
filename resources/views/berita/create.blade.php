@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Form</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Form Berita</h6>
         </div>
         <div class="card-body">
             <form action="{{route('berita.store')}}" method="POST" enctype="multipart/form-data">
