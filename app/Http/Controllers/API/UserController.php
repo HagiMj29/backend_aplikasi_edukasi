@@ -17,6 +17,7 @@ class UserController extends Controller
         $result = $users->map(function ($data){
             
             return [
+                'id'=>$data->id,
                 'name'=>$data->name,
                 'email'=>$data->email,
                 'password'=>$data->password,

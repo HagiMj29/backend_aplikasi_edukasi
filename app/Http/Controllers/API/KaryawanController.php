@@ -17,6 +17,7 @@ class KaryawanController extends controller {
         $result = $karyawans->map(function ($data){
             
             return [
+                'id' => $data->id,
                 'name'=>$data->name,
                 'no_bp'=>$data->no_bp,
                 'no_hp'=>$data->no_hp,

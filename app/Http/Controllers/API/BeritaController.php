@@ -29,4 +29,20 @@ class BeritaController extends controller{
         return response()->json(['message' => 'Data Berhasil di Akses', 'result'=>$result], 200);
     }
 
+    public function galeri()
+    {
+        $beritas = Berita::latest()->get();
+
+        $result = $beritas->map(function ($data){
+            
+            return [
+                'title'=>$data->title,
+                'image'=>$data->image,
+            ];
+
+        });
+
+        return response()->json(['message' => 'Data Berhasil di Akses', 'result'=>$result], 200);
+    }
+
 }

@@ -30,6 +30,7 @@ Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/register', [UserController::class, 'register']);
 
 Route::get('/berita',[BeritaController::class, 'index']);
+Route::get('/galeri',[BeritaController::class, 'galeri']);
 
 Route::get('/karyawan',[KaryawanController::class, 'index']);
 Route::post('/karyawan',[KaryawanController::class, 'store']);
